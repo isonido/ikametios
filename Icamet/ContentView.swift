@@ -7,15 +7,57 @@
 
 import SwiftUI
 
+struct HomeView: View {
+    var body: some View {
+        NavigationView {
+            ZStack {
+                Color.brown
+            }
+        }
+    }
+}
+
+struct HelpView: View {
+    var body: some View {
+        NavigationView {
+            ZStack {
+                Color.red
+            }
+        }
+    }
+}
+
+struct AboutView: View {
+    var body: some View {
+        NavigationView {
+            ZStack {
+                Color.blue
+            }
+        }
+    }
+}
+
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        TabView {
+            HomeView()
+                .tabItem {
+                    Image(systemName: "house")
+                    Text("Карта")
+                }
+            
+            HelpView()
+                .tabItem {
+                    Image(systemName: "house")
+                    Text("Help")
+                }
+            
+            AboutView()
+                .tabItem {
+                    Image(systemName: "house")
+                    Text("About")
+                }
         }
-        .padding()
     }
 }
 
