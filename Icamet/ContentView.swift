@@ -6,12 +6,15 @@
 //
 
 import SwiftUI
+import WebKit
 
 struct HomeView: View {
     var body: some View {
         NavigationView {
-            ZStack {
-                Color.brown
+            VStack {
+                WebView(url: URL(string: "http://vh539762.eurodir.ru")!).frame(height: 500.0)
+                    .cornerRadius(10)
+                    .shadow(color: .black.opacity(0.3), radius: 20.0, x: 5, y: 5)
             }
         }
     }
@@ -38,6 +41,9 @@ struct AboutView: View {
 }
 
 struct ContentView: View {
+    @State private var showWebView = false
+    //private let urlString: String = "http://vh539762.eurodir.ru"
+    
     var body: some View {
         TabView {
             HomeView()
@@ -58,6 +64,19 @@ struct ContentView: View {
                     Text("About")
                 }
         }
+    }
+}
+
+struct WebView: UIViewRepresentable {
+    var url: URL
+    
+    func makeUIView(context: Context) -> WKWebView {
+        return WKWebView()
+    }
+    
+    func updateUIView(_ uiView: WKWebView, context: Context) {
+        let request = URLRequest(url: url)
+        uiView.load(request)
     }
 }
 

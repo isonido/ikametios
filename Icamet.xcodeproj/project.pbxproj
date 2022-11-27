@@ -14,6 +14,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA0D1BD32933C5E300C7F52F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FAAF53BE2933B4BB00F603D5 /* Icamet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Icamet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAAF53C12933B4BB00F603D5 /* IcametApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IcametApp.swift; sourceTree = "<group>"; };
 		FAAF53C32933B4BB00F603D5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -51,6 +52,7 @@
 		FAAF53C02933B4BB00F603D5 /* Icamet */ = {
 			isa = PBXGroup;
 			children = (
+				FA0D1BD32933C5E300C7F52F /* Info.plist */,
 				FAAF53C12933B4BB00F603D5 /* IcametApp.swift */,
 				FAAF53C32933B4BB00F603D5 /* ContentView.swift */,
 				FAAF53C52933B4BC00F603D5 /* Assets.xcassets */,
@@ -270,6 +272,7 @@
 				DEVELOPMENT_TEAM = CB2FK63369;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Icamet/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -299,6 +302,7 @@
 				DEVELOPMENT_TEAM = CB2FK63369;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Icamet/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
