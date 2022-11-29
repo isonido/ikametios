@@ -11,10 +11,9 @@ import WebKit
 struct HomeView: View {
     var body: some View {
         NavigationView {
-            VStack {
-                WebView(url: URL(string: "http://vh539762.eurodir.ru")!).frame(height: 500.0)
-                    .cornerRadius(10)
-                    .shadow(color: .black.opacity(0.3), radius: 20.0, x: 5, y: 5)
+            ZStack {
+                WebView(url: URL(string: "http://vh539762.eurodir.ru")!)
+                    .aspectRatio(1.1, contentMode: .fill)
             }
         }
     }
@@ -42,28 +41,32 @@ struct AboutView: View {
 
 struct ContentView: View {
     @State private var showWebView = false
-    //private let urlString: String = "http://vh539762.eurodir.ru"
     
     var body: some View {
-        TabView {
-            HomeView()
-                .tabItem {
-                    Image(systemName: "house")
-                    Text("Карта")
-                }
+        
+        ZStack(alignment: .bottom, content: {
             
-            HelpView()
-                .tabItem {
-                    Image(systemName: "house")
-                    Text("Help")
-                }
-            
-            AboutView()
-                .tabItem {
-                    Image(systemName: "house")
-                    Text("About")
-                }
-        }
+            TabView {
+                HomeView()
+                    .tabItem {
+                        Image(systemName: "house")
+                        Text("Карта")
+                    }
+                
+                HelpView()
+                    .tabItem {
+                        Image(systemName: "house")
+                        Text("Help")
+                    }
+                
+                AboutView()
+                    .tabItem {
+                        Image(systemName: "house")
+                        Text("About")
+                    }
+            }
+        })
+        .ignoresSafeArea(.all, edges: .bottom)
     }
 }
 
@@ -71,12 +74,22 @@ struct WebView: UIViewRepresentable {
     var url: URL
     
     func makeUIView(context: Context) -> WKWebView {
-        return WKWebView()
+        let source: String = "var meta = document.createElement('meta');" + "meta.name = 'viewport';" + "meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';" + "var head = document.getElementsByTagName('head')[0];" + "head.appendChild(meta);";
+              let script: WKUserScript = WKUserScript(source: source, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
+              let userContentController: WKUserContentController = WKUserContentController()
+              let conf = WKWebViewConfiguration()
+              conf.userContentController = userContentController
+              userContentController.addUserScript(script)
+
+        let webView = WKWebView(frame: .zero, configuration: conf)
+        //webView.scrollView.pinchGestureRecognizer?.isEnabled = false
+        return webView
     }
     
     func updateUIView(_ uiView: WKWebView, context: Context) {
         let request = URLRequest(url: url)
         uiView.load(request)
+        //uiView.scrollView.pinchGestureRecognizer?.isEnabled = false
     }
 }
 
