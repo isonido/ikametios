@@ -48,20 +48,20 @@ struct ContentView: View {
             TabView {
                 HomeView()
                     .tabItem {
-                        Image(systemName: "house")
+                        Image(systemName: "mappin.and.ellipse")
                         Text("Карта")
                     }
                 
                 HelpView()
                     .tabItem {
-                        Image(systemName: "house")
-                        Text("Help")
+                        Image(systemName: "doc.richtext")
+                        Text("Icamet")
                     }
                 
                 AboutView()
                     .tabItem {
-                        Image(systemName: "house")
-                        Text("About")
+                        Image(systemName: "questionmark.square.dashed")
+                        Text("FAQ")
                     }
             }
         })
