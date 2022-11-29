@@ -13,7 +13,6 @@ struct HomeView: View {
         NavigationView {
             ZStack {
                 WebView(url: URL(string: "http://vh539762.eurodir.ru")!)
-                    .aspectRatio(1.1, contentMode: .fill)
             }
         }
     }
