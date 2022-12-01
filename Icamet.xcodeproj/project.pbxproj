@@ -11,6 +11,7 @@
 		FAAF53C42933B4BB00F603D5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF53C32933B4BB00F603D5 /* ContentView.swift */; };
 		FAAF53C62933B4BC00F603D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAAF53C52933B4BC00F603D5 /* Assets.xcassets */; };
 		FAAF53C92933B4BC00F603D5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAAF53C82933B4BC00F603D5 /* Preview Assets.xcassets */; };
+		FAEBA2C02937C0960036E9E3 /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEBA2BF2937C0960036E9E3 /* MailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		FAAF53C32933B4BB00F603D5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FAAF53C52933B4BC00F603D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FAAF53C82933B4BC00F603D5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		FAEBA2BF2937C0960036E9E3 /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 				FA0D1BD32933C5E300C7F52F /* Info.plist */,
 				FAAF53C12933B4BB00F603D5 /* IcametApp.swift */,
 				FAAF53C32933B4BB00F603D5 /* ContentView.swift */,
+				FAEBA2BF2937C0960036E9E3 /* MailView.swift */,
 				FAAF53C52933B4BC00F603D5 /* Assets.xcassets */,
 				FAAF53C72933B4BC00F603D5 /* Preview Content */,
 			);
@@ -140,6 +143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAAF53C42933B4BB00F603D5 /* ContentView.swift in Sources */,
+				FAEBA2C02937C0960036E9E3 /* MailView.swift in Sources */,
 				FAAF53C22933B4BB00F603D5 /* IcametApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

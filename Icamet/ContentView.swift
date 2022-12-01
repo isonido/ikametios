@@ -7,6 +7,7 @@
 
 import SwiftUI
 import WebKit
+import MessageUI
 
 struct HomeView: View {
     var body: some View {
@@ -18,22 +19,65 @@ struct HomeView: View {
     }
 }
 
-struct HelpView: View {
+struct Icamet: View {
     var body: some View {
         NavigationView {
-            ZStack {
-                Color.red
+            VStack {
+                
+                Text("это удостоверение личности иностранца, проживающего в Турции.")
+                
+                Image("cartIkamet")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                
+                Text("Официальный сайт для подачи документов:")
+                
+                Link("Перейти", destination: URL(string: "https://e-ikamet.goc.gov.tr")!)
+                
+                Spacer()
             }
+            .navigationTitle("Икамет")
         }
     }
 }
 
-struct AboutView: View {
+struct FAQ: View {
+    
+    @State var result: Result<MFMailComposeResult, Error>? = nil
+    @State var isShowingMailView = false
+    
     var body: some View {
         NavigationView {
-            ZStack {
-                Color.blue
+            VStack {
+                
+                Text("Красным цветом выделены зоны, которые не подходят для оформления Икамет")
+                
+                Image("mapExample")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                
+                Spacer()
+                
+                Text("Официальный список закрытых районов:")
+                    
+                Link("Перейти", destination: URL(string: "https://www.goc.gov.tr/mahalle-kapatma-duyurusu-hk2")!)
+                
+                Spacer()
+
+                Text("Нашли ошибку или есть коммерческое предложение?")
+                        
+                Button("Написать") {
+                    self.isShowingMailView.toggle()
+                    }
+                    .disabled(MFMailComposeViewController.canSendMail())
+                    .sheet(isPresented: $isShowingMailView) {
+                        MailView(result: self.$result)
+                        }
+                
+                Spacer()
+                Spacer()
             }
+            .navigationTitle("FAQ")
         }
     }
 }
@@ -52,13 +96,13 @@ struct ContentView: View {
                         Text("Карта")
                     }
                 
-                HelpView()
+                Icamet()
                     .tabItem {
                         Image(systemName: "doc.richtext")
-                        Text("Icamet")
+                        Text("Икамет")
                     }
                 
-                AboutView()
+                FAQ()
                     .tabItem {
                         Image(systemName: "questionmark.square.dashed")
                         Text("FAQ")
