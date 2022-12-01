@@ -29,8 +29,10 @@ struct Icamet: View {
                 Image("cartIkamet")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
+                    .padding(3)
                 
                 Text("Официальный сайт для подачи документов:")
+                    .padding(1)
                 
                 Link("Перейти", destination: URL(string: "https://e-ikamet.goc.gov.tr")!)
                 
@@ -59,19 +61,26 @@ struct FAQ: View {
                 Spacer()
                 
                 Text("Официальный список закрытых районов:")
+                    .padding(2)
                     
                 Link("Перейти", destination: URL(string: "https://www.goc.gov.tr/mahalle-kapatma-duyurusu-hk2")!)
                 
                 Spacer()
 
                 Text("Нашли ошибку или есть коммерческое предложение?")
+                    .padding(2)
                         
-                Button("Написать") {
-                    self.isShowingMailView.toggle()
-                    }
-                    .disabled(MFMailComposeViewController.canSendMail())
-                    .sheet(isPresented: $isShowingMailView) {
-                        MailView(result: self.$result)
+                VStack {
+                    if MFMailComposeViewController.canSendMail() {
+                        Button("Написать") {
+                            self.isShowingMailView.toggle()
+                            }
+                        } else {
+                            Text("sonido@mail.ru")
+                            }
+                        }
+                        .sheet(isPresented: $isShowingMailView) {
+                        MailView(isShowing: self.$isShowingMailView, result: self.$result)
                         }
                 
                 Spacer()
