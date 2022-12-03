@@ -13,6 +13,7 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             ZStack {
+                
                 WebView(url: URL(string: "http://vh539762.eurodir.ru")!)
             }
         }
@@ -23,7 +24,6 @@ struct Icamet: View {
     var body: some View {
         NavigationView {
             VStack {
-                
                 Text("это удостоверение личности иностранца, проживающего в Турции.")
                 
                 Image("cartIkamet")
