@@ -11,12 +11,19 @@ import MessageUI
 
 struct HomeView: View {
     @ObservedObject var networkManager = NetworkManager()
+    @State private var isLoading = false
     
     var body: some View {
         NavigationView {
             ZStack {
                 if networkManager.isConnected {
                     WebView(url: URL(string: "http://vh539762.eurodir.ru")!)
+                    
+                    if isLoading {
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle(tint: .red))
+                            .scaleEffect(2)
+                    }
                 } else {
                     VStack {
                         Image(systemName: "wifi.slash")
@@ -30,6 +37,14 @@ struct HomeView: View {
                     }
                 }
             }
+        }
+        .onAppear { startNetworkCall() }
+    }
+    
+    func startNetworkCall() {
+        isLoading = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            isLoading = false
         }
     }
 }
