@@ -10,11 +10,25 @@ import WebKit
 import MessageUI
 
 struct HomeView: View {
+    @ObservedObject var networkManager = NetworkManager()
+    
     var body: some View {
         NavigationView {
             ZStack {
-                
-                WebView(url: URL(string: "http://vh539762.eurodir.ru")!)
+                if networkManager.isConnected {
+                    WebView(url: URL(string: "http://vh539762.eurodir.ru")!)
+                } else {
+                    VStack {
+                        Image(systemName: "wifi.slash")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 130, height: 150)
+                        
+                        Text("Нет подключения к интернету...")
+                            .font(.system(size: 18))
+                            .padding()
+                    }
+                }
             }
         }
     }
@@ -44,7 +58,6 @@ struct Icamet: View {
 }
 
 struct FAQ: View {
-    
     @State var result: Result<MFMailComposeResult, Error>? = nil
     @State var isShowingMailView = false
     
@@ -134,14 +147,13 @@ struct WebView: UIViewRepresentable {
               userContentController.addUserScript(script)
 
         let webView = WKWebView(frame: .zero, configuration: conf)
-        //webView.scrollView.pinchGestureRecognizer?.isEnabled = false
+
         return webView
     }
     
     func updateUIView(_ uiView: WKWebView, context: Context) {
         let request = URLRequest(url: url)
         uiView.load(request)
-        //uiView.scrollView.pinchGestureRecognizer?.isEnabled = false
     }
 }
 
