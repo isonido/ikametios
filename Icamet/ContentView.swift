@@ -11,7 +11,7 @@ import MessageUI
 
 struct HomeView: View {
     @ObservedObject var networkManager = NetworkManager()
-    @State private var isLoading = false
+    @State private var isLoading = true
     
     var body: some View {
         NavigationView {
@@ -38,11 +38,14 @@ struct HomeView: View {
                 }
             }
         }
-        .onAppear { startNetworkCall() }
+        .onAppear {
+            startNetworkCall()
+        }
+        .onDisappear {
+            isLoading = false
+        }
     }
-    
     func startNetworkCall() {
-        isLoading = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             isLoading = false
         }
@@ -125,7 +128,6 @@ struct ContentView: View {
     var body: some View {
         
         ZStack(alignment: .bottom, content: {
-            
             TabView {
                 HomeView()
                     .tabItem {
@@ -146,7 +148,6 @@ struct ContentView: View {
                     }
             }
         })
-        .ignoresSafeArea(.all, edges: .bottom)
     }
 }
 
